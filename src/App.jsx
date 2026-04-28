@@ -19,7 +19,13 @@ export default function App() {
   const [isRunning, setIsRunning] = useState(false);
   const [seed, setSeed] = useState(0);
   const [pipelineVisible, setPipelineVisible] = useState(false);
+  const [toast, setToast] = useState(null);
   const chartsRef = useRef(null);
+
+  const showToast = useCallback((msg) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 3000);
+  }, []);
 
   const handleRunResearch = useCallback(() => {
     setPipelineVisible(true);
@@ -47,11 +53,11 @@ export default function App() {
 
   return (
     <div className="app-layout">
-      <Navbar />
+      <Navbar onAction={showToast} />
 
       <main className="main-content">
         {/* Section 1: Research Console */}
-        <ResearchConsole onRunResearch={handleRunResearch} isRunning={isRunning} />
+        <ResearchConsole onRunResearch={handleRunResearch} isRunning={isRunning} onAction={showToast} />
 
         {/* Pipeline execution display */}
         {pipelineVisible && (
@@ -63,7 +69,7 @@ export default function App() {
         )}
 
         {/* Section 2: AI Insight Summary */}
-        <InsightSummary />
+        <InsightSummary seed={seed} onAction={showToast} />
 
         {/* Charts Section */}
         <div ref={chartsRef}>
@@ -102,6 +108,12 @@ export default function App() {
           </p>
         </footer>
       </main>
+      {/* Notification Toast */}
+      {toast && (
+        <div className="toast animate-fade">
+          {toast}
+        </div>
+      )}
     </div>
   );
 }

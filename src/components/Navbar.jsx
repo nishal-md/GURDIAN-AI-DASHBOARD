@@ -42,7 +42,7 @@ function ShieldLogo({ size = 48 }) {
   );
 }
 
-export default function Navbar() {
+export default function Navbar({ onAction }) {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
@@ -56,11 +56,11 @@ export default function Navbar() {
       </div>
 
       <div className="navbar-actions">
-        <button className="nav-settings-btn">
+        <button className="nav-settings-btn" onClick={() => onAction?.('Opening system settings...')}>
           <Settings size={14} />
           Settings
         </button>
-        <button className="btn btn-navy">
+        <button className="btn btn-navy" onClick={() => onAction?.('Generating export package (CSV/PDF)...')}>
           <Download size={14} />
           Export Data
         </button>

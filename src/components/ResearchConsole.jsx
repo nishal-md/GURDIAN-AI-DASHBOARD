@@ -32,7 +32,7 @@ const researchModes = [
   { id: 'predictive', label: 'Predictive Analysis', desc: 'Forecast-focused results', icon: <TrendingUp size={14}/> },
 ];
 
-export default function ResearchConsole({ onRunResearch, isRunning }) {
+export default function ResearchConsole({ onRunResearch, isRunning, onAction }) {
   const [open, setOpen] = useState(true);
   const [query, setQuery] = useState('');
   const [mode, setMode] = useState('quick');
@@ -81,16 +81,16 @@ export default function ResearchConsole({ onRunResearch, isRunning }) {
 
           {/* Action row */}
           <div className="action-row">
-            <button className="btn btn-ghost" style={{ fontSize: 13 }}>
+            <button className="btn btn-ghost" style={{ fontSize: 13 }} onClick={() => onAction?.('Loading research archive...')}>
               <Clock size={14} /> Research History
             </button>
             <div className="action-row-right">
-              <button className="btn btn-ghost" onClick={() => setQuery('')}>
+              <button className="btn btn-ghost" onClick={() => { setQuery(''); onAction?.('Query cleared.'); }}>
                 <X size={13} /> Clear
               </button>
               <button
                 className="btn btn-teal"
-                onClick={() => onRunResearch({ query, mode, checks, filters })}
+                onClick={() => { onRunResearch(); onAction?.('AI Research Pipeline initiated.'); }}
                 disabled={isRunning}
               >
                 {isRunning
@@ -121,10 +121,10 @@ export default function ResearchConsole({ onRunResearch, isRunning }) {
               <div className="ext-input-section">
                 <div className="ext-title">External Data Input</div>
                 <div className="ext-buttons">
-                  <button className="btn btn-outline" style={{ fontSize: 12, padding: '6px 12px' }}>
+                  <button className="btn btn-outline" style={{ fontSize: 12, padding: '6px 12px' }} onClick={() => onAction?.('Preparing file system...')}>
                     ⬆ Upload File
                   </button>
-                  <button className="btn btn-outline" style={{ fontSize: 12, padding: '6px 12px' }}>
+                  <button className="btn btn-outline" style={{ fontSize: 12, padding: '6px 12px' }} onClick={() => onAction?.('External URL scanner ready.')}>
                     <span style={{ fontSize: 16, marginRight: 4, fontWeight: 'bold' }}>+</span> Add URL
                   </button>
                 </div>

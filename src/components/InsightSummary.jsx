@@ -127,7 +127,7 @@ function ReportModal({ onClose }) {
   );
 }
 
-export default function InsightSummary() {
+export default function InsightSummary({ onAction }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -166,7 +166,7 @@ export default function InsightSummary() {
             </div>
             <span>🕐 Updated 2 minutes ago</span>
           </div>
-          <button className="btn btn-teal" onClick={() => setShowModal(true)}>
+          <button className="btn btn-teal" onClick={() => { setShowModal(true); onAction?.('Synthesizing intelligence report...'); }}>
             <FileText size={13} /> Generate Report
           </button>
         </div>
