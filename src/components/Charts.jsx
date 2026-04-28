@@ -68,14 +68,14 @@ const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
     <div style={{
-      background: '#1e293b', borderRadius: 8, padding: '10px 14px',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.3)', border: '1px solid #334155'
+      background: 'var(--primary-navy)', borderRadius: 8, padding: '10px 14px',
+      boxShadow: 'var(--shadow-lg)', border: '1px solid var(--accent-blue)'
     }}>
-      <p style={{ color: '#94a3b8', fontSize: 11, marginBottom: 6 }}>{label}</p>
+      <p style={{ color: '#cbd5e1', fontSize: 11, marginBottom: 6 }}>{label}</p>
       {payload.map((p, i) => (
         <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: p.color }} />
-          <span style={{ color: '#e2e8f0', fontSize: 12 }}>{p.name}: <strong>{p.value}</strong></span>
+          <span style={{ color: '#ffffff', fontSize: 12 }}>{p.name}: <strong>{p.value}</strong></span>
         </div>
       ))}
     </div>
@@ -88,7 +88,7 @@ export function TopicIntelligenceChart({ seed }) {
   return (
     <div className="chart-card">
       <div className="chart-header">
-        <div className="chart-title"><TrendingUp size={15} color="var(--teal-primary)" /> Topic Intelligence</div>
+        <div className="chart-title"><TrendingUp size={15} color="var(--accent-blue)" /> Topic Intelligence</div>
         <span className="chart-badge badge-teal">Model 2</span>
       </div>
       <div className="chart-subtitle">Powered by Clustering AI (HDBSCAN + BERT)</div>
@@ -107,8 +107,8 @@ export function TopicIntelligenceChart({ seed }) {
           <Legend wrapperStyle={{ fontSize: 11 }} />
           <Line type="monotone" dataKey="hate_speech" name="Hate Speech" stroke="#ef4444" strokeWidth={2} dot={false} />
           <Line type="monotone" dataKey="misinformation" name="Misinformation" stroke="#f59e0b" strokeWidth={2} dot={false} />
-          <Line type="monotone" dataKey="scams" name="Scams" stroke="#8b5cf6" strokeWidth={2} dot={false} />
-          <Line type="monotone" dataKey="normal" name="Normal" stroke="#10b981" strokeWidth={2} dot={false} strokeDasharray="4 2" />
+          <Line type="monotone" dataKey="scams" name="Scams" stroke="var(--primary-navy)" strokeWidth={2} dot={false} />
+          <Line type="monotone" dataKey="normal" name="Normal" stroke="var(--accent-blue)" strokeWidth={2} dot={false} strokeDasharray="4 2" />
         </LineChart>
       </ResponsiveContainer>
       <div style={{ display: 'flex', gap: 8, marginTop: 8, flexWrap: 'wrap' }}>
@@ -176,15 +176,15 @@ export function ForecastChart({ seed }) {
     <div className="chart-card">
       <div className="chart-header">
         <div className="chart-title">
-          <Activity size={15} color="var(--purple)" /> Forecast Engine
+          <Activity size={15} color="var(--accent-blue)" /> Forecast Engine
         </div>
-        <span className="chart-badge badge-purple">Model 4</span>
+        <span className="chart-badge badge-purple" style={{ background: 'var(--primary-navy)' }}>Model 4</span>
       </div>
       <div className="chart-subtitle">Powered by Temporal AI (TFT/LSTM Model) — 4-Week Prediction</div>
       <div className="chart-stats-row">
-        <div className="stat-pill" style={{ color: '#7c3aed' }}>📈 +22% Risk Increase</div>
-        <div className="stat-pill" style={{ color: '#059669' }}>🎯 Peak: Day 28</div>
-        <div className="stat-pill" style={{ color: '#475569' }}>Confidence: 87%</div>
+        <div className="stat-pill" style={{ color: 'var(--primary-navy)' }}>📈 +22% Risk Increase</div>
+        <div className="stat-pill" style={{ color: 'var(--accent-blue)' }}>🎯 Peak: Day 28</div>
+        <div className="stat-pill" style={{ color: 'var(--text-secondary)' }}>Confidence: 87%</div>
       </div>
       <ResponsiveContainer width="100%" height={220}>
         <AreaChart data={data} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
@@ -198,16 +198,16 @@ export function ForecastChart({ seed }) {
           <XAxis dataKey="day" tick={{ fontSize: 9, fill: '#94a3b8' }} interval={4} />
           <YAxis tick={{ fontSize: 10, fill: '#94a3b8' }} domain={[0, 100]} />
           <Tooltip content={<CustomTooltip />} />
-          <Area type="monotone" dataKey="upper" name="Upper Bound" stroke="none" fill="url(#confBand)" />
-          <Area type="monotone" dataKey="lower" name="Lower Bound" stroke="none" fill="white" />
-          <Line type="monotone" dataKey="actual" name="Actual" stroke="#7c3aed" strokeWidth={2.5} dot={false} connectNulls={false} />
-          <Line type="monotone" dataKey="predicted" name="Predicted" stroke="#a78bfa" strokeWidth={2} strokeDasharray="6 3" dot={false} connectNulls={false} />
+          <Area type="monotone" dataKey="upper" name="Upper Bound" stroke="none" fill="rgba(37,99,235,0.1)" />
+          <Area type="monotone" dataKey="lower" name="Lower Bound" stroke="none" fill="var(--bg-card)" />
+          <Line type="monotone" dataKey="actual" name="Actual" stroke="var(--primary-navy)" strokeWidth={2.5} dot={false} connectNulls={false} />
+          <Line type="monotone" dataKey="predicted" name="Predicted" stroke="var(--accent-blue)" strokeWidth={2} strokeDasharray="6 3" dot={false} connectNulls={false} />
         </AreaChart>
       </ResponsiveContainer>
       <div className="anomaly-legend">
-        <div className="anomaly-legend-item"><div style={{ width: 20, height: 2, background: '#7c3aed', borderRadius: 2 }} />Actual</div>
-        <div className="anomaly-legend-item"><div style={{ width: 20, height: 2, background: '#a78bfa', borderRadius: 2, borderTop: '2px dashed #a78bfa' }} />Predicted</div>
-        <div className="anomaly-legend-item"><div style={{ width: 20, height: 8, background: 'rgba(124,58,237,0.15)', borderRadius: 2 }} />Confidence Band</div>
+        <div className="anomaly-legend-item"><div style={{ width: 20, height: 2, background: 'var(--primary-navy)', borderRadius: 2 }} />Actual</div>
+        <div className="anomaly-legend-item"><div style={{ width: 20, height: 2, background: 'var(--accent-blue)', borderRadius: 2, borderTop: '2px dashed var(--accent-blue)' }} />Predicted</div>
+        <div className="anomaly-legend-item"><div style={{ width: 20, height: 8, background: 'rgba(37,99,235,0.1)', borderRadius: 2 }} />Confidence Band</div>
       </div>
     </div>
   );
@@ -225,8 +225,8 @@ export function RiskDistributionChart({ seed }) {
   return (
     <div className="chart-card">
       <div className="chart-header">
-        <div className="chart-title"><BarChart2 size={15} color="#3b82f6" /> Risk Distribution</div>
-        <span className="chart-badge badge-blue">Multi-Model</span>
+        <div className="chart-title"><BarChart2 size={15} color="var(--accent-blue)" /> Risk Distribution</div>
+        <span className="chart-badge badge-blue" style={{ background: 'var(--accent-blue)' }}>Multi-Model</span>
       </div>
       <div className="chart-subtitle">Aggregated output — all values normalized 0–100</div>
       <div className="risk-bars" style={{ marginTop: 12 }}>
