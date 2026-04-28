@@ -14,11 +14,13 @@ import {
 import NetworkGraph from './components/NetworkGraph';
 import SystemHealth from './components/SystemHealth';
 import PipelineRunner from './components/PipelineRunner';
+import SettingsModal from './components/SettingsModal';
 
 export default function App() {
   const [isRunning, setIsRunning] = useState(false);
   const [seed, setSeed] = useState(0);
   const [pipelineVisible, setPipelineVisible] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const [toast, setToast] = useState(null);
   const chartsRef = useRef(null);
 
@@ -53,7 +55,7 @@ export default function App() {
 
   return (
     <div className="app-layout">
-      <Navbar onAction={showToast} />
+      <Navbar onAction={(msg) => msg.includes('settings') ? setSettingsOpen(true) : showToast(msg)} />
 
       <main className="main-content">
         {/* Section 1: Research Console */}
@@ -108,6 +110,9 @@ export default function App() {
           </p>
         </footer>
       </main>
+      {/* Settings Modal */}
+      {settingsOpen && <SettingsModal onClose={() => setSettingsOpen(false)} onAction={showToast} />}
+
       {/* Notification Toast */}
       {toast && (
         <div className="toast animate-fade">
