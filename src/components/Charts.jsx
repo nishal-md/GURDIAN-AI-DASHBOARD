@@ -178,7 +178,7 @@ export function ForecastChart({ seed }) {
         <div className="chart-title">
           <Activity size={15} color="var(--accent-blue)" /> Forecast Engine
         </div>
-        <span className="chart-badge badge-purple" style={{ background: 'var(--primary-navy)' }}>Model 4</span>
+        <span className="chart-badge badge-purple">Model 4</span>
       </div>
       <div className="chart-subtitle">Powered by Temporal AI (TFT/LSTM Model) — 4-Week Prediction</div>
       <div className="chart-stats-row">
@@ -226,7 +226,7 @@ export function RiskDistributionChart({ seed }) {
     <div className="chart-card">
       <div className="chart-header">
         <div className="chart-title"><BarChart2 size={15} color="var(--accent-blue)" /> Risk Distribution</div>
-        <span className="chart-badge badge-blue" style={{ background: 'var(--accent-blue)' }}>Multi-Model</span>
+        <span className="chart-badge badge-blue">Multi-Model</span>
       </div>
       <div className="chart-subtitle">Aggregated output — all values normalized 0–100</div>
       <div className="risk-bars" style={{ marginTop: 12 }}>
