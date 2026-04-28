@@ -48,8 +48,8 @@ export default function ResearchConsole({ onRunResearch, isRunning }) {
       {/* Header */}
       <div className="section-header section-header-teal" onClick={() => setOpen(o => !o)}>
         <div className="section-header-left">
-          <div className="section-icon-box">
-            <Search size={20} color="white" />
+          <div className="section-icon-box" style={{ borderRadius: '8px', background: 'white' }}>
+            <Search size={20} color="var(--teal-primary)" />
           </div>
           <div>
             <div className="section-title">AI Research &amp; Investigation Console</div>
@@ -125,7 +125,7 @@ export default function ResearchConsole({ onRunResearch, isRunning }) {
                     ⬆ Upload File
                   </button>
                   <button className="btn btn-outline" style={{ fontSize: 12, padding: '6px 12px' }}>
-                    🔗 Add URL
+                    <span style={{ fontSize: 16, marginRight: 4, fontWeight: 'bold' }}>+</span> Add URL
                   </button>
                 </div>
                 <div className="ext-hint">Supported: CSV, JSON, PDF, TXT, Logs, External URLs</div>

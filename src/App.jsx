@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import './index.css';
 import './App.css';
 
@@ -25,6 +25,16 @@ export default function App() {
     setPipelineVisible(true);
     setIsRunning(true);
   }, []);
+
+  // Auto-update system (Model-driven real-time updates every 10s)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isRunning) {
+        setSeed(s => s + 1);
+      }
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [isRunning]);
 
   const handlePipelineComplete = useCallback(() => {
     setSeed(s => s + 1);

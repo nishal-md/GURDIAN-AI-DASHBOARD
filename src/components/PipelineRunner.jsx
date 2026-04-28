@@ -3,13 +3,9 @@ import { CheckCircle, Circle, Loader } from 'lucide-react';
 
 const PIPELINE_STEPS = [
   { id: 'ingest',   label: 'Phase 1: Data Ingestion & Standardization', sub: 'Kafka Event Bus → S3 Data Lake' },
-  { id: 'embed',    label: 'Model 1: Unified Representation', sub: 'CLIP + BERT → 512-dim Embeddings → FAISS' },
-  { id: 'topic',    label: 'Model 2: Topic Intelligence', sub: 'HDBSCAN Clustering → Rising Trends' },
-  { id: 'anomaly',  label: 'Model 3: Anomaly Detection', sub: 'Isolation Forest → Risk Alerts' },
-  { id: 'graph',    label: 'Model 5: Graph Intelligence', sub: 'GraphSAGE → Coordination Alerts' },
-  { id: 'forecast', label: 'Model 4: Forecast Engine', sub: 'TFT → 4-Week Risk Prediction' },
-  { id: 'rag',      label: 'Model 6: RAG-X Synthesis', sub: 'LLM + Vector DB → Insights' },
-  { id: 'render',   label: 'Phase 4: Dashboard Update', sub: 'All charts synchronized' },
+  { id: 'models',   label: 'Phase 2: Model Processing (Parallel Execution)', sub: 'Running Models 1–5 for real-time intelligence' },
+  { id: 'synthesis', label: 'Phase 3: Synthesis & Explainability', sub: 'Model 6 (RAG-X) generating contextual insights' },
+  { id: 'render',   label: 'Phase 4: Human Interaction (UI Sync)', sub: 'Synchronizing all charts and intelligence panels' },
 ];
 
 export default function PipelineRunner({ onComplete, isRunning, setIsRunning }) {

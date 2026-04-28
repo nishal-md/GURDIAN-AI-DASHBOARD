@@ -19,7 +19,7 @@ function ReportModal({ onClose }) {
           </div>
           <div className="modal-header-text">
             <div className="modal-header-title">Intelligence Report</div>
-            <div className="modal-header-sub">Generated {formatted}</div>
+            <div className="modal-header-sub">Generated 3/7/2026, 4:10:09 PM</div>
           </div>
           <button className="modal-close" onClick={onClose}>
             <X size={16} />
@@ -136,8 +136,8 @@ export default function InsightSummary() {
         {/* Header */}
         <div className="insight-header">
           <div className="insight-header-left">
-            <div className="insight-icon">
-              <Brain size={20} />
+            <div className="insight-icon" style={{ borderRadius: '8px', background: 'var(--teal-dark)' }}>
+              <Brain size={20} color="white" />
             </div>
             <div>
               <div className="insight-title">AI Insight Summary</div>

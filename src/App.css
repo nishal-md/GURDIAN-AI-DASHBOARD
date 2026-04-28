@@ -173,7 +173,7 @@
 
 .research-mode-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--gray-200); }
 .research-mode-title { font-size: 13px; font-weight: 600; color: var(--gray-700); display: flex; align-items: center; gap: 6px; margin-bottom: 12px; }
-.mode-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.mode-cards { display: flex; flex-direction: column; gap: 10px; }
 .mode-card {
   border: 1.5px solid var(--gray-200);
   border-radius: var(--radius-md);
@@ -196,7 +196,9 @@
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
 }
+.insight-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--teal-primary); }
 .insight-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
 .insight-header-left { display: flex; align-items: center; gap: 12px; }
 .insight-icon {
@@ -225,7 +227,11 @@
 
 /* ── CHARTS GRID ────────────────────────────────── */
 .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-.chart-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 18px; box-shadow: var(--shadow-sm); }
+.chart-card {
+  background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 18px; box-shadow: var(--shadow-sm);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+.chart-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .chart-full { grid-column: 1/-1; }
 .chart-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
 .chart-title { font-size: 14px; font-weight: 700; color: var(--gray-800); display: flex; align-items: center; gap: 7px; }
